@@ -34,7 +34,11 @@ const cart = [
 
 //CODE HERE
 
-// const summedPrice = cart.reduce(/* CALLBACK HERE */)
+const summedPrice = cart.reduce((accumulator, currentItem) => {
+  return accumulator + currentItem.price;
+}, 0);
+
+console.log(`Total cost of all food items: $${summedPrice.toFixed(2)}`);
 
 //////////////////PROBLEM 2////////////////////
 /*  
@@ -52,7 +56,22 @@ const cart = [
 */
 
 //CODE HERE
+function calcFinalPrice(cartTotal, couponValue, tax) {
+  const taxAmount = cartTotal * tax;
 
+  const finalPrice = cartTotal + taxAmount - couponValue;
+
+  return finalPrice;
+}
+
+const cartTotal = 100;
+const couponValue = 10;
+const tax = 0.06;
+
+const finalPrice = calcFinalPrice(cartTotal, couponValue, tax);
+console.log(
+  `Final price after applying tax and coupon: $${finalPrice.toFixed(2)}`
+);
 //////////////////PROBLEM 3////////////////////
 /*  
     In this problem, you'll create a model for 
@@ -75,7 +94,21 @@ const cart = [
 
 /*
     TEXT ANSWER HERE
+firstName (String):
+Data Type: String
+Explanation: This property would store the customer's first name. Using a string data type is suitable because it allows for flexibility in handling different names and ensures compatibility with text-based operations.
 
+lastName (String):
+Data Type: String
+Explanation: Similar to firstName, this property would store the customer's last name. Again, using a string data type is appropriate for handling textual information.
+
+emailAdress (String):
+Data Type: String
+Explanation: The customer's email address is crucial for order confirmation and communication. Using a string data type is suitable for storing email addresses, as they are typically text-based and require validation.
+
+cartItems (Array of Objects):
+Data Type: Array
+Explanation: This property would represent the items the customer has added to their cart. Using an array allows for easy management of multiple items and their details.
 */
 
 /*
@@ -84,3 +117,20 @@ const cart = [
 */
 
 //CODE HERE
+const customer = {
+  firstName: "Carol",
+  lastName: "Baskin",
+  emailAdress: "carolbaskin@email.com",
+  cartItems: [
+    {
+      itemName: "Pizza",
+      itemPrice: 12.99,
+      quantity: 1,
+    },
+    {
+      itemName: "Salad",
+      itemPrice: 7.99,
+      quantity: 1,
+    },
+  ],
+};
